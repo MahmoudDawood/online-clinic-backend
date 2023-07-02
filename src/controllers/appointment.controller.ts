@@ -87,4 +87,24 @@ export namespace AppointmentController {
       next(error);
     }
   };
+
+  export const deleteById = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const appointmentId = parseInt(req.body.id);
+      if (!appointmentId) {
+        // Doesn't handle starting at id = 0
+        throw new Error("Provide an appointment id in request body");
+      }
+      const deletedAppointment = await AppointmentService.deleteById(
+        appointmentId
+      );
+      res.json({ deletedAppointment });
+    } catch (error: any) {
+      next(error);
+    }
+  };
 }

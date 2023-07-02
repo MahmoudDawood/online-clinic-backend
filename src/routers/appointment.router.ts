@@ -24,4 +24,5 @@ appointmentRouter.get(
   authorize.authorizeUser,
   AppointmentController.findByPatient
 );
+appointmentRouter.delete("/", AppointmentController.deleteById);
 export { appointmentRouter };

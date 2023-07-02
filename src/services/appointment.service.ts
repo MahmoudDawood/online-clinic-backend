@@ -59,4 +59,17 @@ export namespace AppointmentService {
       throw new Error(error);
     }
   };
+
+  export const deleteById = async (appointmentId: number) => {
+    try {
+      const deletedAppointment = await prisma.appointment.delete({
+        where: {
+          id: appointmentId,
+        },
+      });
+      return deletedAppointment;
+    } catch (error: any) {
+      throw new Error(error);
+    }
+  };
 }
