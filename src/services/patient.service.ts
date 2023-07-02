@@ -58,13 +58,16 @@ export namespace PatientService {
     }
   };
 
-  type publicData = Pick<Patient, "name" | "gender" | "dateOfBirth">;
+  type publicData = Pick<
+    Patient,
+    "name" | "gender" | "dateOfBirth" | "phoneNumber"
+  >;
   export const findById = async (id: number): Promise<publicData | null> => {
     try {
       const patient = await prisma.patient.findFirst({ where: { id } });
       if (patient) {
-        const { name, gender, dateOfBirth } = patient;
-        return { name, gender, dateOfBirth };
+        const { name, gender, dateOfBirth, phoneNumber } = patient;
+        return { name, gender, dateOfBirth, phoneNumber };
       }
       return null;
     } catch (error: any) {

@@ -25,7 +25,7 @@ export namespace AppointmentController {
         patientId,
         at,
       });
-      await sendSMS(doctorId, at);
+      await sendSMS(doctorId, patientId, at);
       return res.json({ newAppointment });
     } catch (error: any) {
       next(error);
