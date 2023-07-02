@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
 import { AppointmentService } from "../services/appointment.service";
-import { sendSMS } from "../utils/sms";
+import { bookingSMS, cancelationSMS } from "../utils/sms";
 
 export namespace AppointmentController {
   export const create = async (
@@ -25,7 +25,7 @@ export namespace AppointmentController {
         patientId,
         at,
       });
-      await sendSMS(doctorId, patientId, at);
+      await bookingSMS(doctorId, patientId, at);
       return res.json({ newAppointment });
     } catch (error: any) {
       next(error);
@@ -103,6 +103,8 @@ export namespace AppointmentController {
         appointmentId
       );
       res.json({ deletedAppointment });
+      const { doctorId, patientId, at } = deletedAppointment;
+      await cancelationSMS(doctorId, patientId, at);
     } catch (error: any) {
       next(error);
     }
