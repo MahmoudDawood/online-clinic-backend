@@ -40,6 +40,7 @@ userRouter.get(
   authorize.authorizeUser,
   PatientController.findByToken
 );
+userRouter.get("/patient/:id", PatientController.findById);
 userRouter.put(
   "/patient/:id",
   ...patientUpdateValidator,

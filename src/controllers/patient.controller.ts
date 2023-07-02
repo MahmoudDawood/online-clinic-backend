@@ -75,6 +75,20 @@ export namespace PatientController {
     }
   };
 
+  export const findById = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const id = Number(req.params.id);
+      const patient = await PatientService.findById(id);
+      return res.json({ patient });
+    } catch (error) {
+      next(error);
+    }
+  };
+
   export const findByToken = async (
     req: Request,
     res: Response,
