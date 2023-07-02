@@ -45,7 +45,7 @@ export namespace ReviewController {
     next: NextFunction
   ) => {
     try {
-      const id = Number(req.body.id);
+      const id = Number(req.params.id);
       const reviews = await ReviewService.getByDoctorId(id);
       return res.json({ reviews });
     } catch (error) {

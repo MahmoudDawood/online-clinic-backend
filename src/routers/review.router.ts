@@ -13,8 +13,8 @@ reviewRouter.post(
 );
 reviewRouter.get("/", ReviewController.findAll);
 reviewRouter.get(
-  "/doctor",
-  authorize.authorizeUser,
+  "/doctor/:id",
+  // authorize.authorizeUser,
   ReviewController.getByDoctorId
 );
 reviewRouter.get(
