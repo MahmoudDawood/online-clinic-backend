@@ -62,7 +62,7 @@ export namespace AppointmentController {
     next: NextFunction
   ) => {
     try {
-      const doctorId = req.body.id;
+      const doctorId = parseInt(req.params.id);
       const appointments = await AppointmentService.findByDoctor({
         doctorId,
       });
