@@ -96,7 +96,7 @@ export namespace PatientController {
   ) => {
     try {
       const id = Number(req.body.id);
-      const patientProfile = await PatientService.findById(id);
+      const patientProfile = await PatientService.findProfile(id);
       return res.json({ patientProfile });
     } catch (error) {
       next(error);
