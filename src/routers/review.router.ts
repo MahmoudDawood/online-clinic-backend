@@ -22,4 +22,5 @@ reviewRouter.get(
   authorize.authorizeUser,
   ReviewController.getByPatientId
 );
+reviewRouter.delete("/", ReviewController.deleteById);
 export { reviewRouter };

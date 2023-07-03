@@ -66,4 +66,18 @@ export namespace ReviewController {
       next(error);
     }
   };
+
+  export const deleteById = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const reviewId = Number(req.body.id);
+      const deletedReview = await ReviewService.deleteById(reviewId);
+      return res.json({ deletedReview });
+    } catch (error) {
+      next(error);
+    }
+  };
 }

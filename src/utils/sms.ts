@@ -37,7 +37,7 @@ Online Clinic.`,
     });
     console.log("SMS sent successfully");
   } catch (error: any) {
-    throw new Error(error);
+    throw error;
   }
 };
 export const cancelationSMS = async (
@@ -74,6 +74,6 @@ Online clinic.`,
     });
     console.log("SMS sent successfully");
   } catch (error: any) {
-    throw new Error(error);
+    throw error;
   }
 };

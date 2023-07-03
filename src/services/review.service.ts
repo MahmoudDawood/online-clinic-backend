@@ -42,4 +42,17 @@ export namespace ReviewService {
       throw error;
     }
   };
+
+  export const deleteById = async (id: number) => {
+    try {
+      const review = await prisma.patientReview.delete({
+        where: {
+          id,
+        },
+      });
+      return review;
+    } catch (error) {
+      throw error;
+    }
+  };
 }
