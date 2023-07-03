@@ -14,11 +14,7 @@ appointmentRouter.post(
 );
 
 appointmentRouter.get("/", AppointmentController.find);
-appointmentRouter.get(
-  "/doctor",
-  authorize.authorizeUser,
-  AppointmentController.findByDoctor
-);
+appointmentRouter.get("/doctor", AppointmentController.findByDoctor);
 appointmentRouter.get(
   "/patient",
   authorize.authorizeUser,
