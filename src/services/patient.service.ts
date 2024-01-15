@@ -34,6 +34,7 @@ export namespace PatientService {
 
   type PatientLoginData = Pick<Patient, "username" | "password">;
   export const login = async (userData: PatientLoginData) => {
+    // TODO: Use separate login for instructor
     try {
       const user = await prisma.patient.findFirst({
         where: {
